@@ -57,12 +57,18 @@ public class Unit : MonoBehaviour
         if(_hp == 0)
         {
             // ゲームオーバー処理
+            MainGameManager.Instance.GameOver();
         }
     }
 
     public void ScoreUp()
     {
         _score++;
+
+        if(_score % 10 == 0)
+        {
+            MainGameManager.Instance.ChangeGameType();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
