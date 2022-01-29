@@ -405,6 +405,7 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 15}
   - {x: 3, y: 0, z: 15}
   bgmName:
+  - j2_166
   - j1_81
 --- !u!4 &759846517
 Transform:

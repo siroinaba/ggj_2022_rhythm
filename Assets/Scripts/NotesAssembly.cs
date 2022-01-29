@@ -27,7 +27,7 @@ public class NotesAssembly : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // StartCoroutine(test());
-            AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[0]);
+            AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)MainGameManager.Instance.gameType]);
         }
     }
 
@@ -54,8 +54,7 @@ public class NotesAssembly : MonoBehaviour
             if (!NotesList[i].isActivate)
             {
                 int lenIdx = Random.Range(0, MainGameDefine.Instance.lenPosList.Count);
-                //int noteType = Random.Range(0, 2);
-                int noteType = 1;
+                int noteType = 0;
 
                 NotesList[i].SetActivate(MainGameDefine.Instance.lenPosList[lenIdx], (NoteType)noteType);
 
