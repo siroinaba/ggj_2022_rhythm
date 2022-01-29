@@ -46,5 +46,21 @@ public class Unit : MonoBehaviour
 
     }
 
+    public void OnDamage()
+    {
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.GetComponent<NoteEntity>().isActivate)
+            return;
+
+        other.gameObject.SetActive(false);
+    }
+
+    [SerializeField]
+    private int _hp;
+
     private int _lenIndex = 0;
 }

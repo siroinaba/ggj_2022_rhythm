@@ -10,12 +10,4 @@ public class MainGameDefine : SingletonMonoBehaviour<MainGameDefine>
     {
         base.Awake();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 }
