@@ -56,7 +56,16 @@ public class Unit : MonoBehaviour
         if (!other.GetComponent<NoteEntity>().isActivate)
             return;
 
-        other.gameObject.SetActive(false);
+        switch (MainGameManager.Instance.gameType)
+        {
+            case MainGameDefine.GameType.Lightning:
+                other.gameObject.SetActive(false);
+                break;
+            case MainGameDefine.GameType.Darkness:
+                other.gameObject.SetActive(false);
+                OnDamage();
+                break;
+        }
     }
 
     [SerializeField]
