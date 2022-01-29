@@ -54,7 +54,8 @@ public class NotesAssembly : MonoBehaviour
             if (!NotesList[i].isActivate)
             {
                 int lenIdx = Random.Range(0, MainGameDefine.Instance.lenPosList.Count);
-                int noteType = Random.Range(0, 2);
+                //int noteType = Random.Range(0, 2);
+                int noteType = 1;
 
                 NotesList[i].SetActivate(MainGameDefine.Instance.lenPosList[lenIdx], (NoteType)noteType);
 

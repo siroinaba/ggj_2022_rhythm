@@ -31,12 +31,10 @@ public class MainGameManager : SingletonMonoBehaviour<MainGameManager>
 
             if (checkTime <= 0.02f)
             {
-                Debug.Log(AudioManager.Instance.GetGapFromBeat("create!!!!!!!!!!!!! : " + MainGameDefine.Instance.bgmName[0], _targetBeat));
                 _noteAssembly.ActivateNote();
                 _noteAssembly.NotesMove();
                 _targetBeat++;
             }
-            Debug.Log("check ~~~~~~~~~~~~~~~~~~~~~~~~~ : " + checkTime);
         }
     }
 

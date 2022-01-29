@@ -31,6 +31,7 @@ public class NotesDeleteWall : MonoBehaviour
                 break;
             case MainGameDefine.GameType.Darkness:
                 note.SetDeactive();
+                _unit.ScoreUp();
                 break;
         }
     }

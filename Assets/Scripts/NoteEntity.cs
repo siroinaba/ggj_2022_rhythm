@@ -26,8 +26,6 @@ public class NoteEntity : MonoBehaviour
 
     public void Move()
     {
-        Debug.Log(Time.deltaTime);
-
         Vector3 vec = this.transform.position;
         vec.z -= 1.0f;
 
