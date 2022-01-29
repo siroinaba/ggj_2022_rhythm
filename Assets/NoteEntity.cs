@@ -21,9 +21,6 @@ public class NoteEntity : MonoBehaviour
 
     public void Initialize()
     {
-        _mesh = GetComponent<MeshRenderer>();
-        _mesh.enabled = false;
-
         _isActivate = false;
     }
 
@@ -37,14 +34,21 @@ public class NoteEntity : MonoBehaviour
         this.transform.DOMove(vec, 0.5f);
     }
 
-    public void SetActivate(bool isActivate, Vector3 pos)
+    public void SetActivate(Vector3 pos, NotesAssembly.NoteType type)
     {
-        _mesh.enabled = isActivate;
-        _isActivate = isActivate;
+        _isActivate = true;
 
-        if (isActivate)
+        SetPos(pos);
+
+        _noteType = type;
+        switch (type)
         {
-            SetPos(pos);
+            case NotesAssembly.NoteType.Lightning:
+                _lightningObj.SetActive(true);
+                break;
+            case NotesAssembly.NoteType.Darkness:
+                _darknessObj.SetActive(true);
+                break;
         }
     }
 
@@ -53,6 +57,12 @@ public class NoteEntity : MonoBehaviour
         transform.localPosition = pos;
     }
 
-    MeshRenderer _mesh;
-    bool _isActivate = false;
+    [SerializeField]
+    private GameObject _lightningObj;
+
+    [SerializeField]
+    private GameObject _darknessObj;
+
+    private bool _isActivate = false;
+    private NotesAssembly.NoteType _noteType;
 }
