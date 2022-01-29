@@ -21,14 +21,16 @@ public class NotesDeleteWall : MonoBehaviour
         if (!other.GetComponent<NoteEntity>().isActivate)
             return;
 
+        var note = other.gameObject.GetComponent<NoteEntity>();
+
         switch (MainGameManager.Instance.gameType)
         {
             case MainGameDefine.GameType.Lightning:
-                other.gameObject.SetActive(false);
+                note.SetDeactive();
                 _unit.OnDamage();
                 break;
             case MainGameDefine.GameType.Darkness:
-                other.gameObject.SetActive(false);
+                note.SetDeactive();
                 break;
         }
     }

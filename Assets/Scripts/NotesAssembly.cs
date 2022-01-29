@@ -26,8 +26,8 @@ public class NotesAssembly : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(test());
-
+            // StartCoroutine(test());
+            AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[0]);
         }
     }
 
@@ -47,7 +47,7 @@ public class NotesAssembly : MonoBehaviour
         NotesList.Add(note);
     }
 
-    private void ActivateNote()
+    public void ActivateNote()
     {
         for(int i = 0; i < NOTES_MAX; i++)
         {
@@ -79,8 +79,8 @@ public class NotesAssembly : MonoBehaviour
         int count = 0;
         while(count < 50)
         {
-            ActivateNote();
-            NotesMove();
+            //ActivateNote();
+            //NotesMove();
             count++;
             yield return new WaitForSeconds(1.0f);
         }

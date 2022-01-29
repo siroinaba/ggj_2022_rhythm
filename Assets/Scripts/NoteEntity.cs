@@ -52,6 +52,20 @@ public class NoteEntity : MonoBehaviour
         }
     }
 
+    public void SetDeactive()
+    {
+        switch (_noteType)
+        {
+            case NotesAssembly.NoteType.Lightning:
+                _lightningObj.SetActive(false);
+                break;
+            case NotesAssembly.NoteType.Darkness:
+                _darknessObj.SetActive(true);
+                break;
+        }
+        _isActivate = false;
+    }
+
     private void SetPos(Vector3 pos)
     {
         transform.localPosition = pos;

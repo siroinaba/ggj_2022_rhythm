@@ -12,6 +12,8 @@ public class MainGameDefine : SingletonMonoBehaviour<MainGameDefine>
         Darkness,
     }
 
+    public string[] bgmName = new string[1] { "j1_81" };
+
     protected override void Awake()
     {
         base.Awake();
