@@ -79,7 +79,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         float bpm = ConvertNameToBPM (name);
         if (bpm == -1) return -1;
 
-        return Mathf.Abs ((bpm / 60) * targetBeat - BGMSource[name].time);
+        return Mathf.Abs(BGMSource[name].time - 1 / (bpm / 60) * targetBeat);
     }
 
     /// <summary>

@@ -60,7 +60,7 @@ public class NoteEntity : MonoBehaviour
                 _lightningObj.SetActive(false);
                 break;
             case NotesAssembly.NoteType.Darkness:
-                _darknessObj.SetActive(true);
+                _darknessObj.SetActive(false);
                 break;
         }
         _isActivate = false;
