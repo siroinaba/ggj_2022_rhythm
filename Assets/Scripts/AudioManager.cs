@@ -71,7 +71,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
     }
 
     /// <summary>
-    /// 拍からどれくらいずれているかを取得
+    /// 指定した拍からどれくらいずれているかを取得(秒)
     /// </summary>
     public float GetGapFromBeat (string name, float targetBeat) {
         if (!BGMSource.ContainsKey (name)) return -1;
@@ -80,6 +80,26 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         if (bpm == -1) return -1;
 
         return Mathf.Abs (BGMSource[name].time - (bpm / 60) * targetBeat);
+    }
+
+    /// <summary>
+    /// 指定した曲の1拍の長さを取得(秒)
+    /// </summary>
+    public float GetBeatLength (string name) {
+        if (!BGMSource.ContainsKey (name)) return -1;
+
+        float bpm = ConvertNameToBPM (name);
+        if (bpm == -1) return -1;
+
+        return (bpm / 60);
+    }
+
+    /// <summary>
+    /// 指定した曲の現在の再生時間を取得
+    /// </summary>
+    public float GetTime (string name) {
+        if (!BGMSource.ContainsKey (name)) return -1;
+        return BGMSource[name].time;
     }
 
     private float ConvertNameToBPM (string name) {
