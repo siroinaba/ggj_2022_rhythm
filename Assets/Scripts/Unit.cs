@@ -48,7 +48,7 @@ public class Unit : MonoBehaviour
 
     public void OnDamage()
     {
-
+        _hp--;
     }
 
     private void OnTriggerEnter(Collider other)
