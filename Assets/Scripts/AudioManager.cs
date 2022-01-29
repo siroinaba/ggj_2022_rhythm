@@ -69,4 +69,23 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         BGMSource[name].GetSpectrumData (spectrum, 0, FFTWindow.BlackmanHarris);
         return spectrum;
     }
+
+    /// <summary>
+    /// 拍からどれくらいずれているかを取得
+    /// </summary>
+    public float GetGapFromBeat (string name, float targetBeat) {
+        if (!BGMSource.ContainsKey (name)) return -1;
+
+        float bpm = ConvertNameToBPM (name);
+        if (bpm == -1) return -1;
+
+        return Mathf.Abs (BGMSource[name].time - (bpm / 60) * targetBeat);
+    }
+
+    private float ConvertNameToBPM (string name) {
+        string[] nameSplit = name.Split ('_');
+        string bpm = nameSplit[1];
+        if (bpm is null) return -1;
+        return int.Parse (bpm);
+    }
 }
