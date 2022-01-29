@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NotesAssembly : MonoBehaviour
 {
-    public const int LEN_MAX = 10;
     public const int NOTES_MAX = 100;
 
     public enum NoteType
@@ -54,10 +53,10 @@ public class NotesAssembly : MonoBehaviour
         {
             if (!NotesList[i].isActivate)
             {
-                int lenIdx = Random.Range(0, LEN_MAX);
+                int lenIdx = Random.Range(0, MainGameDefine.Instance.lenPosList.Count);
                 int noteType = Random.Range(0, 2);
 
-                NotesList[i].SetActivate(_lenPosList[lenIdx], (NoteType)noteType);
+                NotesList[i].SetActivate(MainGameDefine.Instance.lenPosList[lenIdx], (NoteType)noteType);
 
                 break;
             }
@@ -91,9 +90,6 @@ public class NotesAssembly : MonoBehaviour
 
     [SerializeField]
     private GameObject _noteObj;
-
-    [SerializeField]
-    private List<Vector3> _lenPosList = new List<Vector3>();
 
     private List<NoteEntity> NotesList = new List<NoteEntity>();
 }
