@@ -64,6 +64,8 @@ public class MainGameManager : MonoBehaviour
         switch (_status)
         {
             case MainGameDefine.GameStatus.Title:
+                AudioManager.Instance.PlayBGM("j1_81", true, 0.1f);
+
                 if(_uiViewer == null)
                 {
                     _uiViewer = GameObject.Find("Canvas").GetComponent<UIViewer>();
@@ -128,6 +130,7 @@ public class MainGameManager : MonoBehaviour
 
     private IEnumerator CountDown()
     {
+        AudioManager.Instance.FadeOutBGM("j1_81");
         _uiViewer.SetActiveCountDownUI(true);
 
         _uiViewer.SetCountDownText("3");
