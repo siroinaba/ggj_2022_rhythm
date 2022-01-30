@@ -148,4 +148,45 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
             }
         }
     }
+
+    /// <summary>
+    /// bgmをフェードアウトする(コルーチン版)
+    /// TODO:仮置き
+    /// </summary>
+    public void FadeOutBGMCol (string name, float targetVolume = 0, float updateSpeed = 0.01f) {
+        if (!BGMSource.ContainsKey (name)) return;
+
+        var volume = BGMSource[name].volume;
+        volume -= updateSpeed;
+        BGMSource[name].volume = volume;
+        if (volume <= targetVolume) {
+            BGMSource[name].volume = targetVolume;
+            StopBGM (name);
+        } else {
+            StartCoroutine (WaitOneFrame (() => FadeOutBGMCol (name, targetVolume, updateSpeed)));
+        }
+    }
+
+    /// <summary>
+    /// bgmをフェードインする(コルーチン版)
+    /// TODO:仮置き
+    /// </summary>
+    public void FadeInBGMCol (string name, bool isLoop = true, float targetVolume = 1, float updateSpeed = 0.01f) {
+        if (!BGMSource.ContainsKey (name)) return;
+        if (!BGMSource[name].isPlaying) {
+            PlayBGM (name, isLoop, 0);
+        }
+
+        BGMSource[name].volume += updateSpeed;
+        if (BGMSource[name].volume >= targetVolume) {
+            BGMSource[name].volume = targetVolume;
+        } else {
+            StartCoroutine (WaitOneFrame (() => FadeInBGMCol (name, isLoop, targetVolume, updateSpeed)));
+        }
+    }
+
+    private IEnumerator WaitOneFrame (System.Action onComplete) {
+        yield return null;
+        onComplete ();
+    }
 }

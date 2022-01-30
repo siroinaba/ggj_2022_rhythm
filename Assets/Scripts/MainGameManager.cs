@@ -28,11 +28,11 @@ public class MainGameManager : MonoBehaviour
 
         _noteAssembly.NotesReset();
 
-        AudioManager.Instance.FadeOutBGM(outName);
+        AudioManager.Instance.FadeOutBGMCol(outName);
         if(_gameType==MainGameDefine.GameType.Darkness){
-            AudioManager.Instance.FadeInBGM(inName, true, 0.2f);
+            AudioManager.Instance.FadeInBGMCol(inName, true, 0.2f);
         } else {
-            AudioManager.Instance.FadeInBGM(inName, true, 0.1f);
+            AudioManager.Instance.FadeInBGMCol(inName, true, 0.1f);
         }
 
         ChangeSkybox(_gameType);
@@ -138,7 +138,7 @@ public class MainGameManager : MonoBehaviour
 
     private IEnumerator CountDown()
     {
-        AudioManager.Instance.FadeOutBGM("j1_81");
+        AudioManager.Instance.FadeOutBGMCol("j1_81");
         _uiViewer.SetActiveCountDownUI(true);
 
         _uiViewer.SetCountDownText("3");
