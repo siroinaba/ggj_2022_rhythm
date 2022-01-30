@@ -67,7 +67,7 @@ public class MainGameManager : MonoBehaviour
             case MainGameDefine.GameStatus.InGame:
                 if (_status != _beforeStatus)
                 {
-                    _uiViewer.SetActiveCountDownUI(false);
+                    _uiViewer.SetActiveTitleUI(false);
                     StartCoroutine(CountDown());
                 }
 
@@ -122,6 +122,7 @@ public class MainGameManager : MonoBehaviour
         _uiViewer.SetCountDownText("START");
         yield return new WaitForSeconds(1.0f);
 
+        _uiViewer.SetActiveCountDownUI(false);
         AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType]);
 
         yield break;
