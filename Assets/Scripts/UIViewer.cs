@@ -28,7 +28,7 @@ public class UIViewer : MonoBehaviour
 
         if (isActive)
         {
-            Text scoreText = _resultUI.transform.GetChild(1).GetComponent<Text>();
+            Text scoreText = _resultUI.transform.GetChild(2).GetComponent<Text>();
             scoreText.text = "Score : " + score.ToString();
         }
     }
