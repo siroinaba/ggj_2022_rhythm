@@ -22,10 +22,13 @@ public class MainGameManager : MonoBehaviour
 
     public void ChangeGameType()
     {
-        AudioManager.Instance.StopBGM(MainGameDefine.Instance.bgmName[(int)_gameType]);
-
+        string outName=MainGameDefine.Instance.bgmName[(int)_gameType];
         _gameType = _gameType == MainGameDefine.GameType.Lightning ? MainGameDefine.GameType.Darkness : MainGameDefine.GameType.Lightning;
-        AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)_gameType]);
+        string inName=MainGameDefine.Instance.bgmName[(int)_gameType];
+
+        AudioManager.Instance.FadeOutBGM(outName);
+        AudioManager.Instance.FadeInBGM(inName, true, 0.1f);
+
         ChangeSkybox(_gameType);
 
         _targetBeat = 1;
