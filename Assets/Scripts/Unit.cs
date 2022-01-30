@@ -53,6 +53,7 @@ public class Unit : MonoBehaviour
 
     public void OnDamage()
     {
+        AudioManager.Instance.PlaySE("damage");
         _hp--;
         _manager.HeartImageUpdate(_hp);
 
@@ -65,6 +66,7 @@ public class Unit : MonoBehaviour
 
     public void ScoreUp()
     {
+        AudioManager.Instance.PlaySE("count");
         _score++;
 
         if(_score % 20 == 0)

@@ -142,15 +142,19 @@ public class MainGameManager : MonoBehaviour
         _uiViewer.SetActiveCountDownUI(true);
 
         _uiViewer.SetCountDownText("3");
+        AudioManager.Instance.PlaySE("count");
         yield return new WaitForSeconds(1.0f);
 
         _uiViewer.SetCountDownText("2");
+        AudioManager.Instance.PlaySE("count");
         yield return new WaitForSeconds(1.0f);
 
         _uiViewer.SetCountDownText("1");
+        AudioManager.Instance.PlaySE("count");
         yield return new WaitForSeconds(1.0f);
 
         _uiViewer.SetCountDownText("START");
+        AudioManager.Instance.PlaySE("count");
         yield return new WaitForSeconds(1.0f);
 
         _uiViewer.SetActiveCountDownUI(false);
