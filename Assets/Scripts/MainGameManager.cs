@@ -57,6 +57,7 @@ public class MainGameManager : MonoBehaviour
         _status = MainGameDefine.GameStatus.Result;
         AudioManager.Instance.StopBGM(MainGameDefine.Instance.bgmName[(int)_gameType]);
         _uiViewer.SetActiveResultUI(true, score);
+        _uiViewer.SetActiveScoreText(false);
     }
 
     private void GameExecute()
@@ -148,9 +149,17 @@ public class MainGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _uiViewer.SetActiveCountDownUI(false);
+
+        _uiViewer.SetActiveScoreText(true);
+
         AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType], true, 0.1f);
 
         yield break;
+    }
+
+    public void ScoreTextUpdate(int score)
+    {
+        _uiViewer.SetScoreText(score);
     }
 
     [SerializeField]

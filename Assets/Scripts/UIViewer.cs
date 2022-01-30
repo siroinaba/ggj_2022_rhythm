@@ -44,6 +44,17 @@ public class UIViewer : MonoBehaviour
         countDownText.text = text;
     }
 
+    public void SetActiveScoreText(bool isActive)
+    {
+        _scoreText.SetActive(isActive);
+    }
+
+    public void SetScoreText(int score)
+    {
+        var scoreText = _scoreText.GetComponent<Text>();
+        scoreText.text = "SCORE : " + score.ToString();
+    }
+
     [SerializeField]
     private GameObject _titleUI;
 
@@ -52,4 +63,10 @@ public class UIViewer : MonoBehaviour
 
     [SerializeField]
     private GameObject _countDownText;
+
+    [SerializeField]
+    private GameObject _scoreText;
+
+    [SerializeField]
+    private GameObject _hartImage;
 }

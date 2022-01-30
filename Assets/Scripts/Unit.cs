@@ -70,6 +70,8 @@ public class Unit : MonoBehaviour
         {
             _manager.ChangeGameType();
         }
+
+        _manager.ScoreTextUpdate(_score);
     }
 
     private void OnTriggerEnter(Collider other)
