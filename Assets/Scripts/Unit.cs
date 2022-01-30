@@ -66,7 +66,7 @@ public class Unit : MonoBehaviour
 
     public void ScoreUp()
     {
-        AudioManager.Instance.PlaySE("count");
+        AudioManager.Instance.PlaySE("count",0.5f);
         _score++;
 
         if(_score % 20 == 0)
