@@ -26,8 +26,25 @@ public class MainGameManager : MonoBehaviour
 
         _gameType = _gameType == MainGameDefine.GameType.Lightning ? MainGameDefine.GameType.Darkness : MainGameDefine.GameType.Lightning;
         AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)_gameType]);
+        ChangeSkybox(_gameType);
 
         _targetBeat = 1;
+    }
+
+    private void ChangeSkybox(MainGameDefine.GameType type)
+    {
+        Material material = null;
+        switch(type){
+            case MainGameDefine.GameType.Lightning:
+            material = this._lightSkybox;
+            break;
+
+            case MainGameDefine.GameType.Darkness:
+            material = this._darknessSkybox;
+            break;   
+        }
+
+        RenderSettings.skybox = material;
     }
 
     public void GameOver(int score)
@@ -123,7 +140,7 @@ public class MainGameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _uiViewer.SetActiveCountDownUI(false);
-        AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType]);
+        AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType], true, 0.1f);
 
         yield break;
     }
@@ -133,6 +150,12 @@ public class MainGameManager : MonoBehaviour
 
     [SerializeField]
     private UIViewer _uiViewer;
+
+    [SerializeField]
+    private Material _darknessSkybox;
+
+    [SerializeField]
+    private Material _lightSkybox;
 
     MainGameDefine.GameType _gameType;
     private int _targetBeat;

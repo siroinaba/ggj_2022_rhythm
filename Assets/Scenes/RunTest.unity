@@ -229,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _noteAssembly: {fileID: 1232374333}
   _uiViewer: {fileID: 1408116817}
+  _darknessSkybox: {fileID: 2100000, guid: d1fdb8e44b28da34d9e922cca0bc740e, type: 2}
+  _lightSkybox: {fileID: 2100000, guid: 9ca22510633fbfd4399f1704cd9d5c72, type: 2}
 --- !u!4 &79780103
 Transform:
   m_ObjectHideFlags: 0
