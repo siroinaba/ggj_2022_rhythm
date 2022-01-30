@@ -32,7 +32,6 @@ public class NotesAssembly : MonoBehaviour
         for(int i = 0; i < NOTES_MAX; i++)
         {
             NoteCreate();
-
         }
     }
 
@@ -43,7 +42,7 @@ public class NotesAssembly : MonoBehaviour
         NotesList.Add(note);
     }
 
-    public void ActivateNote()
+    public void ActivateNote(MainGameDefine.GameType type)
     {
         for(int i = 0; i < NOTES_MAX; i++)
         {
@@ -52,9 +51,9 @@ public class NotesAssembly : MonoBehaviour
                 if (!NotesList[i].isActivate)
                 {
                     int lenIdx = Random.Range(0, MainGameDefine.Instance.lenPosList.Count);
-                    int noteType = 0;
+                    int noteType = Random.Range(0, 1);
 
-                    NotesList[i].SetActivate(MainGameDefine.Instance.lenPosList[lenIdx], (NoteType)noteType);
+                    NotesList[i].SetActivate(MainGameDefine.Instance.lenPosList[lenIdx], type);
 
                     break;
                 }
@@ -86,6 +85,17 @@ public class NotesAssembly : MonoBehaviour
         }
 
         _noteCount = 0;
+    }
+
+    public void NotesChangeModel(MainGameDefine.GameType type)
+    {
+        for (int i = 0; i < NotesList.Count; i++)
+        {
+            if (!NotesList[i].isActivate)
+                continue;
+
+            NotesList[i].NoteModelChange(type);
+        }
     }
 
     [SerializeField]

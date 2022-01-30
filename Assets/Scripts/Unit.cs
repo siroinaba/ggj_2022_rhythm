@@ -21,8 +21,8 @@ public class Unit : MonoBehaviour
     {
         InputOperation();
 
-        _debugHpText.text = "HP : " + _hp.ToString();
-        _debugScoreText.text = "SCORE : " + _score.ToString();
+        //_debugHpText.text = "HP : " + _hp.ToString();
+        //_debugScoreText.text = "SCORE : " + _score.ToString();
     }
 
     private void InputOperation()

@@ -26,6 +26,8 @@ public class MainGameManager : MonoBehaviour
         _gameType = _gameType == MainGameDefine.GameType.Lightning ? MainGameDefine.GameType.Darkness : MainGameDefine.GameType.Lightning;
         string inName=MainGameDefine.Instance.bgmName[(int)_gameType];
 
+        _noteAssembly.NotesChangeModel(_gameType);
+
         AudioManager.Instance.FadeOutBGM(outName);
         AudioManager.Instance.FadeInBGM(inName, true, 0.1f);
 
@@ -102,7 +104,7 @@ public class MainGameManager : MonoBehaviour
 
                     if (checkTime <= 0.02f)
                     {
-                        _noteAssembly.ActivateNote();
+                        _noteAssembly.ActivateNote(_gameType);
                         _noteAssembly.NotesMove();
                         _targetBeat++;
                     }

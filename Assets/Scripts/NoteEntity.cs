@@ -35,20 +35,19 @@ public class NoteEntity : MonoBehaviour
         this.transform.DOMove(vec, 0.5f);
     }
 
-    public void SetActivate(Vector3 pos, NotesAssembly.NoteType type)
+    public void SetActivate(Vector3 pos, MainGameDefine.GameType type)
     {
         _isActivate = true;
         _useCount++;
 
         SetPos(pos);
 
-        _noteType = type;
         switch (type)
         {
-            case NotesAssembly.NoteType.Lightning:
+            case MainGameDefine.GameType.Lightning:
                 _lightningObj.SetActive(true);
                 break;
-            case NotesAssembly.NoteType.Darkness:
+            case MainGameDefine.GameType.Darkness:
                 _darknessObj.SetActive(true);
                 break;
         }
@@ -56,16 +55,25 @@ public class NoteEntity : MonoBehaviour
 
     public void SetDeactive()
     {
-        switch (_noteType)
+        _lightningObj.SetActive(false);
+        _darknessObj.SetActive(false);
+
+        _isActivate = false;
+    }
+
+    public void NoteModelChange(MainGameDefine.GameType type)
+    {
+        switch (type)
         {
-            case NotesAssembly.NoteType.Lightning:
+            case MainGameDefine.GameType.Darkness:
                 _lightningObj.SetActive(false);
+                _darknessObj.SetActive(true);
                 break;
-            case NotesAssembly.NoteType.Darkness:
+            case MainGameDefine.GameType.Lightning:
+                _lightningObj.SetActive(true);
                 _darknessObj.SetActive(false);
                 break;
         }
-        _isActivate = false;
     }
 
     private void SetPos(Vector3 pos)
