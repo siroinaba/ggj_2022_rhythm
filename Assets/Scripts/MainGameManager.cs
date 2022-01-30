@@ -62,6 +62,7 @@ public class MainGameManager : MonoBehaviour
         AudioManager.Instance.StopBGM(MainGameDefine.Instance.bgmName[(int)_gameType]);
         _uiViewer.SetActiveResultUI(true, score);
         _uiViewer.SetActiveScoreText(false);
+        _uiViewer.SetActiveHeartImage(false);
     }
 
     private void GameExecute()
@@ -155,6 +156,7 @@ public class MainGameManager : MonoBehaviour
         _uiViewer.SetActiveCountDownUI(false);
 
         _uiViewer.SetActiveScoreText(true);
+        _uiViewer.SetActiveHeartImage(true);
 
         AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType], true, 0.2f);
 
@@ -164,6 +166,11 @@ public class MainGameManager : MonoBehaviour
     public void ScoreTextUpdate(int score)
     {
         _uiViewer.SetScoreText(score);
+    }
+
+    public void HeartImageUpdate(int hp)
+    {
+        _uiViewer.UpdateHeartImage(false, hp);
     }
 
     [SerializeField]

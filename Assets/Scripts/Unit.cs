@@ -54,6 +54,7 @@ public class Unit : MonoBehaviour
     public void OnDamage()
     {
         _hp--;
+        _manager.HeartImageUpdate(_hp);
 
         if(_hp == 0)
         {
@@ -66,7 +67,7 @@ public class Unit : MonoBehaviour
     {
         _score++;
 
-        if(_score % 10 == 0)
+        if(_score % 20 == 0)
         {
             _manager.ChangeGameType();
         }

@@ -55,6 +55,17 @@ public class UIViewer : MonoBehaviour
         scoreText.text = "SCORE : " + score.ToString();
     }
 
+    public void SetActiveHeartImage(bool isActive)
+    {
+        _heartImageRoot.SetActive(isActive);
+    }
+
+    public void UpdateHeartImage(bool isActive, int hp)
+    {
+        Image image = _heartImageRoot.transform.GetChild(hp).GetComponent<Image>();
+        image.enabled = isActive;
+    }
+
     [SerializeField]
     private GameObject _titleUI;
 
@@ -68,5 +79,5 @@ public class UIViewer : MonoBehaviour
     private GameObject _scoreText;
 
     [SerializeField]
-    private GameObject[] _hartImages;
+    private GameObject _heartImageRoot;
 }
