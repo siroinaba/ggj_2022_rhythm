@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour
         Vector3 startPos = MainGameDefine.Instance.lenPosList[_lenIndex];
         startPos.z = 0;
         transform.localPosition = startPos;
+        _manager = GameObject.Find("MainGameManager").GetComponent<MainGameManager>();
     }
 
     // Update is called once per frame
@@ -57,7 +58,7 @@ public class Unit : MonoBehaviour
         if(_hp == 0)
         {
             // ゲームオーバー処理
-            MainGameManager.Instance.GameOver();
+            _manager.GameOver();
         }
     }
 
@@ -67,7 +68,7 @@ public class Unit : MonoBehaviour
 
         if(_score % 10 == 0)
         {
-            MainGameManager.Instance.ChangeGameType();
+            _manager.ChangeGameType();
         }
     }
 
@@ -78,7 +79,7 @@ public class Unit : MonoBehaviour
 
         var note = other.gameObject.GetComponent<NoteEntity>();
 
-        switch (MainGameManager.Instance.gameType)
+        switch (_manager.gameType)
         {
             case MainGameDefine.GameType.Lightning:
                 note.SetDeactive();
@@ -103,4 +104,6 @@ public class Unit : MonoBehaviour
     private int _lenIndex = 0;
 
     private int _score = 0;
+
+    private MainGameManager _manager;
 }

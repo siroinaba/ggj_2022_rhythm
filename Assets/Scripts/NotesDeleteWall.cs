@@ -8,6 +8,7 @@ public class NotesDeleteWall : MonoBehaviour
     void Start()
     {
         _unit = transform.parent.GetComponent<Unit>();
+        _manager = GameObject.Find("MainGameManager").GetComponent<MainGameManager>();
     }
 
     // Update is called once per frame
@@ -23,7 +24,7 @@ public class NotesDeleteWall : MonoBehaviour
 
         var note = other.gameObject.GetComponent<NoteEntity>();
 
-        switch (MainGameManager.Instance.gameType)
+        switch (_manager.gameType)
         {
             case MainGameDefine.GameType.Lightning:
                 note.SetDeactive();
@@ -37,4 +38,5 @@ public class NotesDeleteWall : MonoBehaviour
     }
 
     Unit _unit;
+    MainGameManager _manager;
 }

@@ -24,11 +24,7 @@ public class NotesAssembly : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // StartCoroutine(test());
-            AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)MainGameManager.Instance.gameType]);
-        }
+
     }
 
     private void NotesLoad()
@@ -71,6 +67,14 @@ public class NotesAssembly : MonoBehaviour
                 continue;
 
             NotesList[i].Move();
+        }
+    }
+
+    public void NotesReset()
+    {
+        for (int i = 0; i < NotesList.Count; i++)
+        {
+            NotesList[i].SetDeactive();
         }
     }
 
