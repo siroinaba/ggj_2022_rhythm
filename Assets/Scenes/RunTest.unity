@@ -498,8 +498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 10
-  _debugHpText: {fileID: 1179298222}
-  _debugScoreText: {fileID: 1313369252}
+  _debugHpText: {fileID: 0}
+  _debugScoreText: {fileID: 0}
 --- !u!4 &675610472
 Transform:
   m_ObjectHideFlags: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   - {x: 2, y: 0, z: 15}
   - {x: 3, y: 0, z: 15}
   bgmName:
-  - j2_166
+  - j2_83
   - j1_81
 --- !u!4 &759846517
 Transform:
@@ -1495,7 +1495,7 @@ MonoBehaviour:
   _resultUI: {fileID: 443545870}
   _countDownText: {fileID: 2024099492}
   _scoreText: {fileID: 1313369250}
-  _hartImage: {fileID: 0}
+  _hartImages: []
 --- !u!1 &1422132830
 GameObject:
   m_ObjectHideFlags: 0

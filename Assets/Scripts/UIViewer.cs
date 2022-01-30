@@ -68,5 +68,5 @@ public class UIViewer : MonoBehaviour
     private GameObject _scoreText;
 
     [SerializeField]
-    private GameObject _hartImage;
+    private GameObject[] _hartImages;
 }
