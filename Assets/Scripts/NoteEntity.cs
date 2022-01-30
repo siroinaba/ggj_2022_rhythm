@@ -7,6 +7,8 @@ public class NoteEntity : MonoBehaviour
 {
     public bool isActivate { get { return _isActivate; } }
 
+    public int useCount { get { return _useCount; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class NoteEntity : MonoBehaviour
     public void Initialize()
     {
         _isActivate = false;
+        _useCount = 0;
     }
 
     public void Move()
@@ -35,6 +38,7 @@ public class NoteEntity : MonoBehaviour
     public void SetActivate(Vector3 pos, NotesAssembly.NoteType type)
     {
         _isActivate = true;
+        _useCount++;
 
         SetPos(pos);
 
@@ -77,4 +81,6 @@ public class NoteEntity : MonoBehaviour
 
     private bool _isActivate = false;
     private NotesAssembly.NoteType _noteType;
+
+    private int _useCount;
 }
