@@ -12,7 +12,7 @@ public class MainGameDefine : SingletonMonoBehaviour<MainGameDefine>
         Darkness,
     }
 
-    public string[] bgmName = new string[1] { "j1_81" };
+    public string[] bgmName = new string[2] { "j1_81", "j2_83" };
 
     public enum GameStatus
     {
