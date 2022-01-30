@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [DefaultExecutionOrder (-100)]
@@ -79,7 +80,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         float bpm = ConvertNameToBPM (name);
         if (bpm == -1) return -1;
 
-        return Mathf.Abs(BGMSource[name].time - 1 / (bpm / 60) * targetBeat);
+        return Mathf.Abs (BGMSource[name].time - 1 / (bpm / 60) * targetBeat);
     }
 
     /// <summary>
@@ -107,5 +108,44 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
         string bpm = nameSplit[1];
         if (bpm is null) return -1;
         return int.Parse (bpm);
+    }
+
+    /// <summary>
+    /// bgmをフェードインする
+    /// </summary>
+    public async void FadeInBGM (string name, bool isLoop = true, float volume = 1) {
+        if (!BGMSource.ContainsKey (name)) return;
+        if (BGMSource[name].isPlaying) return;
+
+        BGMSource[name].loop = isLoop;
+        BGMSource[name].volume = 0;
+        BGMSource[name].Play ();
+
+        while (true) {
+            await Task.Delay (10);
+            BGMSource[name].volume += 0.01f;
+            if (BGMSource[name].volume >= volume) {
+                BGMSource[name].volume = volume;
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// bgmをフェードアウトする
+    /// </summary>
+    public async void FadeOutBGM (string name, float volume = 0) {
+        if (!BGMSource.ContainsKey (name)) return;
+        if (!BGMSource[name].isPlaying) return;
+
+        while (true) {
+            await Task.Delay (10);
+            BGMSource[name].volume -= 0.01f;
+            if (BGMSource[name].volume <= volume) {
+                BGMSource[name].volume = volume;
+                BGMSource[name].Stop ();
+                break;
+            }
+        }
     }
 }
