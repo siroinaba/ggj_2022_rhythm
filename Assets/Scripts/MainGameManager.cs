@@ -29,7 +29,11 @@ public class MainGameManager : MonoBehaviour
         _noteAssembly.NotesReset();
 
         AudioManager.Instance.FadeOutBGM(outName);
-        AudioManager.Instance.FadeInBGM(inName, true, 0.1f);
+        if(_gameType==MainGameDefine.GameType.Darkness){
+            AudioManager.Instance.FadeInBGM(inName, true, 0.2f);
+        } else {
+            AudioManager.Instance.FadeInBGM(inName, true, 0.1f);
+        }
 
         ChangeSkybox(_gameType);
 
@@ -67,7 +71,7 @@ public class MainGameManager : MonoBehaviour
         switch (_status)
         {
             case MainGameDefine.GameStatus.Title:
-                AudioManager.Instance.PlayBGM("j1_81", true, 0.1f);
+                AudioManager.Instance.PlayBGM("j1_81", true, 0.2f);
 
                 if(_uiViewer == null)
                 {
@@ -152,7 +156,7 @@ public class MainGameManager : MonoBehaviour
 
         _uiViewer.SetActiveScoreText(true);
 
-        AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType], true, 0.1f);
+        AudioManager.Instance.PlayBGM(MainGameDefine.Instance.bgmName[(int)gameType], true, 0.2f);
 
         yield break;
     }
