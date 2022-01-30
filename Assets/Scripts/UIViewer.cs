@@ -33,9 +33,23 @@ public class UIViewer : MonoBehaviour
         }
     }
 
+    public void SetActiveCountDownUI(bool isActive)
+    {
+        _countDownText.SetActive(isActive);
+    }
+
+    public void SetCountDownText(string text)
+    {
+        var countDownText = _countDownText.GetComponent<Text>();
+        countDownText.text = text;
+    }
+
     [SerializeField]
     private GameObject _titleUI;
 
     [SerializeField]
     private GameObject _resultUI;
+
+    [SerializeField]
+    private GameObject _countDownText;
 }
