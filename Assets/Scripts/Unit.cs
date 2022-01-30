@@ -58,7 +58,7 @@ public class Unit : MonoBehaviour
         if(_hp == 0)
         {
             // ゲームオーバー処理
-            _manager.GameOver();
+            _manager.GameOver(_score);
         }
     }
 

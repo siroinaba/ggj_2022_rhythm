@@ -22,9 +22,15 @@ public class UIViewer : MonoBehaviour
         _titleUI.SetActive(isActive);
     }
 
-    public void SetActiveResultUI(bool isActive)
+    public void SetActiveResultUI(bool isActive, int score)
     {
         _resultUI.SetActive(isActive);
+
+        if (isActive)
+        {
+            Text scoreText = _resultUI.transform.GetChild(1).GetComponent<Text>();
+            scoreText.text = "Score : " + score.ToString();
+        }
     }
 
     [SerializeField]

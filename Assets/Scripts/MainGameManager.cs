@@ -30,12 +30,11 @@ public class MainGameManager : MonoBehaviour
         _targetBeat = 1;
     }
 
-    public void GameOver()
+    public void GameOver(int score)
     {
         _status = MainGameDefine.GameStatus.Result;
         AudioManager.Instance.StopBGM(MainGameDefine.Instance.bgmName[(int)_gameType]);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _uiViewer.SetActiveResultUI(true, score);
     }
 
     private void GameExecute()
@@ -92,6 +91,11 @@ public class MainGameManager : MonoBehaviour
                 }
                 break;
             case MainGameDefine.GameStatus.Result:
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    _uiViewer.SetActiveResultUI(false, 0);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
                 break;
         }
 
@@ -109,10 +113,11 @@ public class MainGameManager : MonoBehaviour
     [SerializeField]
     NotesAssembly _noteAssembly;
 
+    [SerializeField]
+    private UIViewer _uiViewer;
+
     MainGameDefine.GameType _gameType;
     private int _targetBeat;
     MainGameDefine.GameStatus _status = MainGameDefine.GameStatus.None;
     MainGameDefine.GameStatus _beforeStatus = MainGameDefine.GameStatus.None;
-
-    private UIViewer _uiViewer;
 }
